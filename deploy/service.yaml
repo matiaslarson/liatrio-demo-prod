@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-svc
+  namespace: xyz-demo
+spec:
+  type: ClusterIP
+  selector:
+    app: demo
+  ports:
+  - name: http
+    port: 80 # Service's port
+    protocol: TCP
+    targetPort: 8080 # Container's port
