@@ -42,7 +42,7 @@ jobs:
       uses: 'google-github-actions/auth@v1'
       with:
         token_format: 'access_token'
-        workload_identity_provider: ${{ vars.GKE_WL_PROVIDER }}
+        workload_identity_provider: ${{ secrets.GKE_WL_PROVIDER }}
         service_account: ${{ secrets.GKE_SVC_ACCNT }}
 
     # Alternative option - authentication via credentials json
