@@ -1,0 +1,7 @@
+resources:
+  - "deploy/deployment.yaml"
+  - "deploy/service.yaml"
+  - "deploy/cert.yaml"
+  - "deploy/frontend.yaml"
+  - "deploy/_namespace.yaml"
+  - "deploy/ingress.yaml"
