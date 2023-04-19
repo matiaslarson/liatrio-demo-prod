@@ -13,6 +13,7 @@ Demo for XYZ Corp. deployment
 - Download the Terraform service account credentials and add them as a Terraform Secret Variable called `GOOGLE_CREDENTIALS`.
 - Add your GCP project name, Github repository, and the region to deploy to in the `gcp/_terraform.tfvars` file, and queue a Plan/Apply
 - After Terraform has created the cluster, copy the `gke_service_account` and `gke_workload_federation_provider` outputs into your Github repo (Settings > Secrets and variables > Actions).
+  - Additionally set `GAR_LOCATION`, `GKE_PROJECT`, and `GKE_REGION` as standard variables.
 - Optionally point DNS to the IP of the ingress load balancer.
 
 ### Run application locally with
