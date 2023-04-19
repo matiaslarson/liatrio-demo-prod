@@ -14,6 +14,6 @@ variable "domain" {
   description = "domain to deploy"
 }
 
-variable "lb_ip" {
+variable "ingress_ip" {
   description = "load balancer IP"
 }
