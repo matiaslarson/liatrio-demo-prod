@@ -9,7 +9,6 @@
 
 data "google_dns_managed_zone" "liatrio-demo-zone" {
     name = "liatrio-demo"
-    dns_name = "${var.domain}."
 }
 
 
