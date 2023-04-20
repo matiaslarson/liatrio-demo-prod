@@ -18,7 +18,7 @@ env:
   GKE_ZONE: ${{ vars.GKE_ZONE }}
   GKE_SVC_ACCNT: ${{ secrets.GKE_SVC_ACCNT }}
   APP_DOMAIN: ${{ vars.APP_DOMAIN }}
-  DEPLOYMENT_NAMESPACE: $ {{ vars.DEPLOYMENT_NAMESPACE }}
+  DEPLOYMENT_NAMESPACE: ${{ vars.DEPLOYMENT_NAMESPACE }}
   DEPLOYMENT_NAME: xyz-demo
   REPOSITORY: liatrio-demo
   IMAGE: xyz-demo
