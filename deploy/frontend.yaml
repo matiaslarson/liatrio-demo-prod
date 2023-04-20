@@ -2,7 +2,6 @@ apiVersion: networking.gke.io/v1beta1
 kind: FrontendConfig
 metadata:
   name: demo-frontend-config
-  namespace: xyz-demo
 spec:
   redirectToHttps:
     enabled: true

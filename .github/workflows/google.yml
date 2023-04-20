@@ -17,8 +17,9 @@ env:
   GKE_REGION: ${{ vars.GKE_REGION }}
   GKE_ZONE: ${{ vars.GKE_ZONE }}
   GKE_SVC_ACCNT: ${{ secrets.GKE_SVC_ACCNT }}
+  APP_DOMAIN: ${{ vars.APP_DOMAIN }}
+  DEPLOYMENT_NAMESPACE: $ {{ vars.DEPLOYMENT_NAMESPACE }}
   DEPLOYMENT_NAME: xyz-demo
-  DEPLOYMENT_NAMESPACE: xyz-demo
   REPOSITORY: liatrio-demo
   IMAGE: xyz-demo
 
@@ -84,7 +85,28 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |-
-        # replacing the image name in the k8s template
+        # replacing the variables in the k8s template
+        cat <<EOF > ingress_patch.json
+        [
+          {"op": "replace",
+          "path": "/spec/rules/0/host",
+          "value": "xyz-app.$APP_DOMAIN"}
+        ]
+        EOF
+        cat <<EOF > cert_patch.json
+        [
+          {"op": "replace",
+          "path": "/spec/domains/0",
+          "value": "xyz-app.$APP_DOMAIN"}
+        ]
+        EOF
+        cat <<EOF > namespace_patch.json
+        [
+          {"op": "replace",
+          "path": "/metadata/name",
+          "value": "$DEPLOYMENT_NAMESPACE"}
+        ]
+        EOF
         ./kustomize edit set image xyz-demo=$GAR_LOCATION-docker.pkg.dev/$PROJECT_NAME/$REPOSITORY/$IMAGE:$GITHUB_SHA
         ./kustomize build . | kubectl apply -n $DEPLOYMENT_NAMESPACE -f -
         kubectl rollout status -n $DEPLOYMENT_NAMESPACE deployment/$DEPLOYMENT_NAME

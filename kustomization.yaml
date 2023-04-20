@@ -5,3 +5,17 @@ resources:
   - "deploy/frontend.yaml"
   - "deploy/_namespace.yaml"
   - "deploy/ingress.yaml"
+
+patches:
+  - path: ingress_patch.json
+    target:
+      group: networking.k8s.io
+      version: v1
+      kind: Ingress
+      name: demo-ingress
+  - path: cert_patch.json
+    target:
+      group: networking.gke.io
+      version: v1
+      kind: ManagedCertificate
+      name: demo-cert

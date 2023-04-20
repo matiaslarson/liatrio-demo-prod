@@ -2,14 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: demo-ingress
-  namespace: xyz-demo
   annotations:
     networking.gke.io/v1.FrontendConfig: demo-frontend-config
     networking.gke.io/managed-certificates: demo-cert
 
 spec:
   rules:
-  - host: xyz-app.demo.valha.la
+  - host: xyz-app.demo.example.com
     http:
       paths:
       - path: /

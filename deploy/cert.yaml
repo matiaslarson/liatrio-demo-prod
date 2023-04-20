@@ -4,4 +4,4 @@ metadata:
   name: demo-cert
 spec:
   domains:
-    - xyz-app.demo.valha.la
+    - xyz-app.demo.example.com
