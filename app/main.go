@@ -10,7 +10,7 @@ func main() {
 	r := gin.Default()
 
 	r.GET("/", func(c *gin.Context) {
-		c.String(200, "Running")
+		c.String(200, "Cloudy with a chance of containers")
 	})
 
 	api := r.Group("/api")
